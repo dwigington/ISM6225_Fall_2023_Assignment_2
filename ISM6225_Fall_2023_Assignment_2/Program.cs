@@ -384,13 +384,13 @@ namespace ISM6225_Fall_2023_Assignment_2
                 // Write your code here and you can modify the return value according to the requirements
                 
                 Dictionary<int, int> numbers = new Dictionary<int, int>(); //initialize a dictionary to track numbers as they are read
-                int totalpairs = 0; //counts the number of pairs
+                int totalpairs = 0; //tracks the number of pairs
 
                 for (int i = 0; i < nums.Length; i++)
                 {
                     if (numbers.ContainsKey(nums[i])) // if the input integer from nums[] is ALREADY in the dictionary...
                     {
-                        totalpairs++;    // increase the pair count 
+                        totalpairs += numbers[nums[i]];    // increase the pair count 
                         numbers[nums[i]]++; // add 1 to the dictionary value for key nums[i]
                     }
                     else
@@ -473,13 +473,13 @@ namespace ISM6225_Fall_2023_Assignment_2
                         thirdmax = nums[i];
                     }
                 }
-                if (thirdmax > firstmax)
+                if (thirdmax == int.MinValue) //if there is NO third max i.e. it still equals default/given value (MinValue)
+                {
+                    return firstmax; //return the first max
+                }
+                else // if thirdmax does not equal default value, that means there is a third max so we return it. 
                 {
                     return thirdmax;
-                }
-                else
-                {
-                    return firstmax;
                 }
                 //return 0;
             }
